@@ -7,499 +7,250 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --cream: #f7f4ee;
-      --ink: #1a1714;
-      --ink-light: #4a4540;
-      --rust: #9b3a1e;
-      --rust-light: #c4623e;
-      --rule: #c8bfb0;
-      --card-bg: #ffffff;
-      --section-gap: 5rem;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 17px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--cream);
-      border-bottom: 1px solid var(--rule);
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-    nav .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: .03em;
-      color: var(--ink);
-      text-decoration: none;
-    }
-    nav ul {
-      display: flex; gap: 2rem; list-style: none;
-    }
-    nav ul a {
-      font-family: 'Source Serif 4', serif;
-      font-size: .85rem;
-      font-weight: 300;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    nav ul a:hover { color: var(--rust); }
-
-    /* ── HERO ── */
-    #home {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 5rem 2rem 4rem;
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 3.5rem;
-      align-items: start;
-    }
-    .hero-photo {
-      width: 220px; height: 270px;
-      object-fit: cover;
-      object-position: top;
-      filter: grayscale(20%);
-      border: 1px solid var(--rule);
-    }
-    .hero-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      font-weight: 600;
-      line-height: 1.15;
-      letter-spacing: -.01em;
-      margin-bottom: .6rem;
-    }
-    .hero-tagline {
-      font-size: .95rem;
-      font-weight: 300;
-      color: var(--ink-light);
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      margin-bottom: 1.6rem;
-      border-left: 2px solid var(--rust);
-      padding-left: .8rem;
-    }
-    .hero-roles {
-      list-style: none;
-      margin-bottom: 1.8rem;
-    }
-    .hero-roles li {
-      font-size: .95rem;
-      color: var(--ink-light);
-      padding: .3rem 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .hero-roles li:last-child { border-bottom: none; }
-    .hero-roles a { color: var(--rust); text-decoration: none; }
-    .hero-roles a:hover { text-decoration: underline; }
-
-    .hero-links {
-      display: flex; flex-wrap: wrap; gap: .6rem;
-    }
-    .hero-links a {
-      display: inline-flex; align-items: center; gap: .35rem;
-      font-size: .82rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--ink);
-      border: 1px solid var(--rule);
-      padding: .35rem .75rem;
-      text-decoration: none;
-      transition: background .2s, border-color .2s, color .2s;
-    }
-    .hero-links a:hover {
-      background: var(--rust);
-      border-color: var(--rust);
-      color: #fff;
-    }
-
-    /* ── DIVIDER ── */
-    .section-divider {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      border-top: 1px solid var(--rule);
-    }
-
-    /* ── SECTIONS ── */
-    section {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: var(--section-gap) 2rem;
-    }
-
-    .section-label {
-      font-family: 'Playfair Display', serif;
-      font-size: .78rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--rust);
-      margin-bottom: 2rem;
-    }
-
-    /* ── FIELDS ── */
-    .fields-line {
-      font-size: 1rem;
-      color: var(--ink-light);
-      font-style: italic;
-      margin-bottom: .4rem;
-    }
-    .phd-line {
-      font-size: .95rem;
-      color: var(--ink-light);
-    }
-
-    /* ── PAPER CARDS ── */
-    .papers-list { display: flex; flex-direction: column; gap: 1.2rem; }
-
-    .paper-card {
-      background: var(--card-bg);
-      border: 1px solid var(--rule);
-      padding: 1.4rem 1.6rem;
-      transition: border-color .2s;
-    }
-    .paper-card:hover { border-color: var(--rust-light); }
-
-    .paper-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: .3rem;
-    }
-    .paper-title a { color: inherit; text-decoration: none; }
-    .paper-title a:hover { color: var(--rust); }
-
-    .paper-meta {
-      font-size: .82rem;
-      color: var(--ink-light);
-      font-weight: 300;
-      letter-spacing: .02em;
-    }
-    .paper-meta .status {
-      display: inline-block;
-      font-size: .72rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      background: var(--cream);
-      border: 1px solid var(--rule);
-      padding: .1rem .5rem;
-      margin-left: .5rem;
-      vertical-align: middle;
-    }
-    .paper-meta .status.published {
-      border-color: var(--rust);
-      color: var(--rust);
-    }
-    .paper-featured {
-      font-size: .8rem;
-      color: var(--ink-light);
-      font-style: italic;
-      margin-top: .4rem;
-    }
-    .paper-featured a { color: var(--rust); text-decoration: none; }
-    .paper-featured a:hover { text-decoration: underline; }
-
-    /* ── OP-EDS ── */
-    .opeds-list { display: flex; flex-direction: column; gap: .6rem; }
-    .oped-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      padding: .6rem 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .oped-item:last-child { border-bottom: none; }
-    .oped-title a {
-      color: var(--ink);
-      text-decoration: none;
-      font-size: .95rem;
-    }
-    .oped-title a:hover { color: var(--rust); }
-    .oped-venue {
-      font-size: .8rem;
-      color: var(--ink-light);
-      white-space: nowrap;
-      font-style: italic;
-    }
-
-    /* ── TEACHING ── */
-    .teaching-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: .6rem 2rem;
-    }
-    .course {
-      font-size: .95rem;
-      padding: .5rem 0;
-      border-bottom: 1px solid var(--rule);
-      color: var(--ink-light);
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      background: var(--ink);
-      color: var(--cream);
-      max-width: 100%;
-      padding: 4rem 2rem;
-      margin-top: 0;
-    }
-    #contact .inner {
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    #contact .section-label { color: var(--rust-light); }
-    #contact a {
-      color: var(--cream);
-      font-size: 1.1rem;
-    }
-    #contact a:hover { color: var(--rust-light); }
-    #contact .contact-note {
-      font-size: .85rem;
-      color: #8a847a;
-      margin-top: 1rem;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--ink);
-      border-top: 1px solid #2e2a26;
-      padding: 1.2rem 2rem;
-      text-align: center;
-      font-size: .78rem;
-      color: #5a5550;
-    }
-
-    /* ── FADE-IN ANIMATION ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up {
-      opacity: 0;
-      animation: fadeUp .6s ease forwards;
-    }
-    .delay-1 { animation-delay: .1s; }
-    .delay-2 { animation-delay: .22s; }
-    .delay-3 { animation-delay: .34s; }
-    .delay-4 { animation-delay: .46s; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      #home {
-        grid-template-columns: 1fr;
-      }
-      .hero-photo { width: 160px; height: 200px; }
-      .teaching-grid { grid-template-columns: 1fr; }
-      nav ul { gap: 1rem; }
-      .oped-item { flex-direction: column; gap: .2rem; }
-    }
+    :root{--cream:#f7f4ee;--ink:#1a1714;--ink-light:#4a4540;--rust:#9b3a1e;--rust-light:#c4623e;--rule:#c8bfb0;--card-bg:#fff;--section-gap:5rem}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--cream);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+    nav{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px solid var(--rule);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+    nav .logo{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;letter-spacing:.03em;color:var(--ink);text-decoration:none}
+    nav ul{display:flex;gap:2rem;list-style:none}
+    nav ul a{font-size:.85rem;font-weight:300;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-light);text-decoration:none;transition:color .2s}
+    nav ul a:hover{color:var(--rust)}
+    #home{max-width:860px;margin:0 auto;padding:5rem 2rem 4rem;display:grid;grid-template-columns:220px 1fr;gap:3.5rem;align-items:start}
+    .hero-photo{width:220px;height:270px;object-fit:cover;object-position:top;filter:grayscale(20%);border:1px solid var(--rule);background:#ddd8d0}
+    .hero-text h1{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:600;line-height:1.15;letter-spacing:-.01em;margin-bottom:.6rem}
+    .hero-tagline{font-size:.95rem;font-weight:300;color:var(--ink-light);letter-spacing:.04em;text-transform:uppercase;margin-bottom:1.6rem;border-left:2px solid var(--rust);padding-left:.8rem}
+    .hero-roles{list-style:none;margin-bottom:1.8rem}
+    .hero-roles li{font-size:.95rem;color:var(--ink-light);padding:.3rem 0;border-bottom:1px solid var(--rule)}
+    .hero-roles li:last-child{border-bottom:none}
+    .hero-roles a{color:var(--rust);text-decoration:none}
+    .hero-roles a:hover{text-decoration:underline}
+    .hero-links{display:flex;flex-wrap:wrap;gap:.6rem}
+    .hero-links a{display:inline-flex;align-items:center;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);border:1px solid var(--rule);padding:.35rem .75rem;text-decoration:none;transition:background .2s,border-color .2s,color .2s}
+    .hero-links a:hover{background:var(--rust);border-color:var(--rust);color:#fff}
+    .section-divider{max-width:860px;margin:0 auto;padding:0 2rem;border-top:1px solid var(--rule)}
+    section{max-width:860px;margin:0 auto;padding:var(--section-gap) 2rem}
+    .section-label{font-family:'Playfair Display',serif;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:2rem}
+    .fields-line{font-size:1rem;color:var(--ink-light);font-style:italic;margin-bottom:.4rem}
+    .phd-line{font-size:.95rem;color:var(--ink-light)}
+    .papers-list{display:flex;flex-direction:column;gap:1.2rem}
+    .paper-card{background:var(--card-bg);border:1px solid var(--rule);padding:1.4rem 1.6rem;transition:border-color .2s}
+    .paper-card:hover{border-color:var(--rust-light)}
+    .paper-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+    .paper-title a{color:inherit;text-decoration:none}
+    .paper-title a:hover{color:var(--rust)}
+    .paper-meta{font-size:.82rem;color:var(--ink-light);font-weight:300}
+    .paper-meta a{color:var(--rust);text-decoration:none}
+    .paper-meta a:hover{text-decoration:underline}
+    .status{display:inline-block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;background:var(--cream);border:1px solid var(--rule);padding:.1rem .5rem;margin-left:.5rem;vertical-align:middle}
+    .status.published{border-color:var(--rust);color:var(--rust)}
+    .status.forthcoming{border-color:#5a7a3a;color:#5a7a3a}
+    .paper-featured{font-size:.8rem;color:var(--ink-light);font-style:italic;margin-top:.4rem}
+    .paper-featured a{color:var(--rust);text-decoration:none}
+    .paper-featured a:hover{text-decoration:underline}
+    .opeds-list{display:flex;flex-direction:column;gap:.6rem}
+    .oped-item{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--rule)}
+    .oped-item:last-child{border-bottom:none}
+    .oped-title a{color:var(--ink);text-decoration:none;font-size:.95rem}
+    .oped-title a:hover{color:var(--rust)}
+    .oped-venue{font-size:.8rem;color:var(--ink-light);white-space:nowrap;font-style:italic}
+    .teaching-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem 2rem}
+    .course{font-size:.95rem;padding:.5rem 0;border-bottom:1px solid var(--rule);color:var(--ink-light)}
+    .consulting-intro{font-size:1rem;color:var(--ink-light);max-width:640px;margin-bottom:2.4rem;line-height:1.8}
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2.4rem}
+    .service-card{border:1px solid var(--rule);padding:1.2rem 1.4rem;background:var(--card-bg)}
+    .service-card h3{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:600;margin-bottom:.4rem;color:var(--ink)}
+    .service-card p{font-size:.85rem;color:var(--ink-light);line-height:1.6}
+    .consulting-track{border-left:2px solid var(--rust);padding-left:1.2rem;margin-bottom:2rem}
+    .consulting-track p{font-size:.95rem;color:var(--ink-light);line-height:1.8}
+    .consulting-cta{display:inline-block;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--rust);border:1px solid var(--rust);padding:.55rem 1.4rem;text-decoration:none;transition:background .2s,color .2s}
+    .consulting-cta:hover{background:transparent;color:var(--rust)}
+    #contact{background:var(--ink);color:var(--cream);max-width:100%;padding:4rem 2rem}
+    #contact .inner{max-width:860px;margin:0 auto}
+    #contact .section-label{color:var(--rust-light)}
+    #contact a{color:var(--cream);font-size:1.1rem}
+    #contact a:hover{color:var(--rust-light)}
+    #contact .contact-note{font-size:.85rem;color:#8a847a;margin-top:1rem}
+    footer{background:var(--ink);border-top:1px solid #2e2a26;padding:1.2rem 2rem;text-align:center;font-size:.78rem;color:#5a5550}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .fade-up{opacity:0;animation:fadeUp .6s ease forwards}
+    .delay-1{animation-delay:.1s}.delay-2{animation-delay:.22s}.delay-3{animation-delay:.34s}.delay-4{animation-delay:.46s}
+    @media(max-width:640px){#home{grid-template-columns:1fr}.hero-photo{width:160px;height:200px}.teaching-grid,.services-grid{grid-template-columns:1fr}nav ul{gap:1rem}.oped-item{flex-direction:column;gap:.2rem}}
   </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <a class="logo" href="#home">Raphael Corbi</a>
   <ul>
     <li><a href="#research">Research</a></li>
     <li><a href="#opeds">Op-Eds</a></li>
     <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#consulting">Consulting</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <div id="home">
-  <img
-    class="hero-photo fade-up"
-    src="photo.jpg"
-    alt="Raphael Corbi"
-    onerror="this.style.background='#ddd8d0';this.removeAttribute('src')"
-  />
+  <img class="hero-photo fade-up" src="photo.jpg" alt="Raphael Corbi" />
   <div class="hero-text">
     <h1 class="fade-up delay-1">Raphael<br>Corbi</h1>
-    <p class="hero-tagline fade-up delay-2">Economist · University of São Paulo</p>
+    <p class="hero-tagline fade-up delay-2">Economist &middot; University of S&atilde;o Paulo</p>
     <ul class="hero-roles fade-up delay-3">
-      <li>Full Professor of Economics, University of São Paulo</li>
-      <li>Research Director, <a href="#">Center for the Studies of Religion and Public Policy (CERP USP)</a></li>
+      <li>Full Professor of Economics, University of S&atilde;o Paulo</li>
+      <li>Research Director, <a href="https://sites.usp.br/cerp/">Center for the Studies of Religion and Public Policy (CERP USP)</a></li>
       <li>Associate Editor, <em>Journal of Economics, Management, and Religion</em> (JEMAR)</li>
       <li>Invited Researcher, The Abdul Latif Jameel Poverty Action Lab (J-PAL)</li>
-      <li>Board of Directors, Italian-Brazilian Economic Association</li>
+      <li>Board of Directors, <a href="https://www.aibe.website/">Italian-Brazilian Economic Association</a></li>
     </ul>
     <div class="hero-links fade-up delay-4">
-      <a href="#">CV (English)</a>
-      <a href="#">CV Lattes</a>
+      <a href="https://www.dropbox.com/scl/fi/5q3i40yf01jt1b2747kyy/CV_Corbi-15.pdf?rlkey=yvxanytvnwku50ijoc1cf8zkb&dl=0" target="_blank">CV (English)</a>
+      <a href="http://lattes.cnpq.br/0306001183992855" target="_blank">CV Lattes</a>
       <a href="mailto:rcorbi@usp.br">Email</a>
-      <a href="#">Google Scholar</a>
+      <a href="https://scholar.google.com/citations?user=PLACEHOLDER" target="_blank">Google Scholar</a>
     </div>
   </div>
 </div>
 
 <div class="section-divider"></div>
 
-<!-- FIELDS -->
 <section id="fields">
   <p class="section-label">Research Fields</p>
-  <p class="fields-line">Political economy · Labor economics · Economics of culture and religion · Economic growth and development</p>
-  <p class="phd-line" style="margin-top:.8rem;">Ph.D. in Economics, London Business School, UK, 2014</p>
+  <p class="fields-line">Political economy &middot; Labor economics &middot; Economics of culture and religion &middot; Economic growth and development</p>
+  <p class="phd-line" style="margin-top:.8rem">Ph.D. in Economics, London Business School, UK, 2014</p>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- RESEARCH -->
 <section id="research">
-  <p class="section-label">Working Papers &amp; In Progress</p>
+
+  <p class="section-label">Publications</p>
   <div class="papers-list">
 
     <div class="paper-card">
-      <p class="paper-title"><a href="#">The Providence Effect: Religion, Social Costs and Stock Market Participation</a></p>
-      <p class="paper-meta"><span class="status">Submitted</span></p>
+      <p class="paper-title"><a href="https://drive.google.com/file/d/139Py6lYjwkIAiYt2sFgoECsHmTbf_s9e/view" target="_blank">Regional Transfer Multipliers</a></p>
+      <p class="paper-meta">with Elias Papaioannou and Paolo Surico &middot; <em>The Review of Economic Studies</em>, Vol. 86, Issue 5, Oct. 2019, pp. 1901&ndash;1934 &middot; <a href="https://doi.org/10.1093/restud/rdy069" target="_blank">DOI</a> <span class="status published">Published</span></p>
+      <p class="paper-featured">Featured in <a href="https://voxeu.org/article/transfer-multipliers-evidence-brazil" target="_blank">VoxEU.org</a>, May/2019 &middot; 2020 Haralambos Simeonidis prize for best paper in Economics by a Brazilian scholar</p>
     </div>
 
     <div class="paper-card">
-      <p class="paper-title"><a href="#">Asymmetric Intergenerational Transmission and The Great Religious Divergence</a></p>
-      <p class="paper-meta"><span class="status">Submitted</span></p>
+      <p class="paper-title"><a href="https://drive.google.com/file/d/1w5oGKmpp80xbZbJmX9jadzUuGygl4Dz4/view" target="_blank">Church Tax Exemption and Structure of Religious Markets: a Dynamic Structural Analysis</a></p>
+      <p class="paper-meta">with Fabio Miessi Sanches &middot; <em>American Economic Journal: Microeconomics</em>, Vol. 17, No. 3, Aug. 2025, pp. 131&ndash;63 &middot; <a href="https://www.aeaweb.org/articles?id=10.1257/mic.20210238" target="_blank">DOI</a> <span class="status published">Published</span></p>
+      <p class="paper-featured">Featured in <a href="https://www.aeaweb.org/research/church-tax-exemption-structure" target="_blank">AEA Research Highlights</a> &middot; <a href="https://economist.com/finance-and-economics/2025/03/27/even-priests-need-the-free-market" target="_blank">The Economist</a> &middot; <a href="https://www.nexojornal.com.br/ensaio/2021/O-Congresso-e-as-isen%C3%A7%C3%B5es-tribut%C3%A1rias-das-igrejas" target="_blank">Nexo Jornal</a> &middot; <a href="https://politica.estadao.com.br/noticias/geral,bancada-evangelica-seria-menor-se-igreja-pagasse-imposto-aponta-estudo,70003700261" target="_blank">O Estado de S&atilde;o Paulo</a> &middot; <a href="https://jornal.usp.br/universidade/novo-centro-de-estudos-investiga-relacao-entre-religiao-e-politicas-publicas/" target="_blank">Jornal USP</a> &middot; Best paper at the 43rd Meeting of the Brazilian Econometric Society</p>
     </div>
 
     <div class="paper-card">
-      <p class="paper-title"><a href="#">Dams and Rural Conflict: Evidence from Brazil's Hydropower Expansion</a></p>
+      <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/261s4mu6iz8ww86osue1f/Church_Differentiation_RR3.pdf?rlkey=q5hfqpxgtbkx27vmltblpu59y&dl=0" target="_blank">The Decline of Religiosity in America: Evidence from a Structural Model of Endogenous Church Differentiation</a></p>
+      <p class="paper-meta">with Fabio A. Miessi Sanches <span class="status forthcoming">Forthcoming &middot; JPE Micro</span></p>
+    </div>
+
+    <div class="paper-card">
+      <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/ev3vd3b013s1usnrnptmu/mortality_abono_may2025.pdf?rlkey=nwkh8iifgtwf3vjz2vnci0amm&dl=0" target="_blank">Income Shocks and Mortality of Low-Wage Workers: Evidence from Wage Allowances in Brazil</a></p>
+      <p class="paper-meta">with Caio Pedro Castro <span class="status forthcoming">Forthcoming &middot; Journal of Development Economics</span></p>
+    </div>
+
+    <div class="paper-card">
+      <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/5s47osm1vhp69xpj4t9qj/NonWageCompensation_CFN-6.pdf?rlkey=u0me3196klbw0waks1xj2ile1&dl=0" target="_blank">Internal Migration and Labor Market Adjustments in the Presence of Nonwage Compensation</a></p>
+      <p class="paper-meta">with Tiago Ferraz and Renata Narita <span class="status forthcoming">Forthcoming &middot; Journal of Development Economics</span></p>
+    </div>
+
+    <div class="paper-card">
+      <p class="paper-title"><a href="https://www.dropbox.com/s/ei7pgtw9vv6jag1/Edited_Democracy_aug22.pdf?dl=0" target="_blank">Edited Democracy: Media Manipulation and the News Coverage of Presidential Debates</a></p>
+      <p class="paper-meta">with Alexsandros Cavgias, Luis Meloni and Lucas Novaes <span class="status forthcoming">Forthcoming &middot; Comparative Political Studies</span></p>
+    </div>
+
+    <div class="paper-card">
+      <p class="paper-title"><a href="https://www.dropbox.com/s/i95bgk1x4m1unn5/BCN_payroll_tax_labor.pdf?dl=0" target="_blank">Payroll Tax, Employment and Labor Market Concentration</a></p>
+      <p class="paper-meta">with Eric Baumgartner and Renata Narita &middot; Revise and resubmit at <em>Labour Economics</em></p>
+    </div>
+
+    <div class="paper-card">
+      <p class="paper-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0165176522004207" target="_blank">Natural Disasters and Preferences for the Environment: Evidence from the Impressionable Years</a></p>
+      <p class="paper-meta">with Chiara Falco &middot; <em>Economics Letters</em>, Vol. 222, Jan. 2023 &middot; <a href="https://ideas.repec.org/p/spa/wpaper/2022wpecon07.html" target="_blank">Open version</a> <span class="status published">Published</span></p>
+    </div>
+
+    <div class="paper-card">
+      <p class="paper-title"><a href="https://ideas.repec.org/a/ebl/ecbull/eb-20-01177.html" target="_blank">Female Judges and In-Group Bias in Labor Courts</a></p>
+      <p class="paper-meta">with Rafael Ferreira, Jaqueline Oliveira and Danilo Souza &middot; <em>Economics Bulletin</em>, Vol. 41(3), 2021 <span class="status published">Published</span></p>
+    </div>
+
+    <div class="paper-card">
+      <p class="paper-title"><a href="https://www.dropbox.com/s/ybf9pqvygjfh6da/Sexism_Corbi_Picchetti.pdf?dl=0" target="_blank">The Cost of Gendered Attitudes on a Female Candidate: Evidence from Google Trends</a></p>
+      <p class="paper-meta">with Pedro Picchetti &middot; <em>Economics Letters</em>, Vol. 196, Nov. 2020 <span class="status published">Published</span></p>
+    </div>
+
+    <div class="paper-card">
+      <p class="paper-title"><a href="https://www.sciencedirect.com/science/article/pii/S0165176517304329" target="_blank">Unintended Consequences of Unemployment Insurance: Evidence from Stricter Eligibility Criteria in Brazil</a></p>
+      <p class="paper-meta">with Cristiano Carvalho and Renata Narita &middot; <em>Economics Letters</em>, Vol. 162, pp. 157&ndash;161, 2018 <span class="status published">Published</span></p>
+    </div>
+
+  </div>
+
+  <p class="section-label" style="margin-top:3rem">Working Papers</p>
+  <div class="papers-list">
+
+    <div class="paper-card">
+      <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/0n29h45avri1sw81sk3ft/Dams_and_Rural_Conflict_FINAL.pdf?rlkey=bopc2ecmdqtllqxwrbzx6tmhs&dl=0" target="_blank">Dams and Rural Conflict: Evidence from Brazil's Hydropower Expansion</a></p>
       <p class="paper-meta">with Chiara Falco and Luca J Uberti <span class="status">Submitted</span></p>
     </div>
 
     <div class="paper-card">
-      <p class="paper-title"><a href="#">The Industrial Organization of Belief: Market Size, Church Expansion, and Religious Change</a></p>
+      <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/qso4mowxbz6zkbuovry0l/IO_Beliefs_CFM.pdf?rlkey=ry34j1i46jqebp2jhasf0u0c8&dl=0" target="_blank">The Industrial Organization of Belief: Market Size, Church Expansion, and Religious Change</a></p>
       <p class="paper-meta">with Tiago Ferraz and Fabio Miessi Sanches <span class="status">Submitted</span></p>
     </div>
 
     <div class="paper-card">
-      <p class="paper-title"><a href="#">Emotional Rhetoric and Political Competition Under Authoritarian Regimes: Evidence from Brazilian Congressional Speeches</a></p>
+      <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/bh8ucacw81dpxw6knmdiq/emotional_rhetoric.pdf?rlkey=ffbgis552zqxa1sl0xgzhawmh&dl=0" target="_blank">Emotional Rhetoric and Political Competition Under Authoritarian Regimes: Evidence from Brazilian Congressional Speeches</a></p>
       <p class="paper-meta">with Alan Funtowicz <span class="status">Submitted</span></p>
     </div>
 
     <div class="paper-card">
-      <p class="paper-title"><a href="#">Labor Courts, Job Search and Employment: Evidence from a Labor Reform in Brazil</a></p>
-      <p class="paper-meta">with Renata Narita, Danilo Souza and Rafael Ferreira · Draft coming soon</p>
-      <p class="paper-featured">Featured in CNN Business · Valor Econômico · UOL Economia · Crusoé</p>
+      <p class="paper-title">The Providence Effect: Religion, Social Costs and Stock Market Participation</p>
+      <p class="paper-meta"><span class="status">Submitted</span></p>
     </div>
 
     <div class="paper-card">
-      <p class="paper-title"><a href="#">Payroll Tax, Employment and Labor Market Concentration</a></p>
-      <p class="paper-meta">with Eric Baumgartner and Renata Narita · Revise and resubmit at <em>Labour Economics</em></p>
+      <p class="paper-title"><a href="https://www.dropbox.com/s/4jw3i3gao7hyfmk/SSRN-id4121304.pdf?dl=0" target="_blank">Labor Courts, Job Search and Employment: Evidence from a Labor Reform in Brazil</a></p>
+      <p class="paper-meta">with Renata Narita, Danilo Souza and Rafael Ferreira &middot; Draft coming soon</p>
+      <p class="paper-featured">Featured in <a href="https://www.cnnbrasil.com.br/business/estudo-aponta-regra-da-reforma-trabalhista-gerou-17-milhao-de-vagas-de-trabalho/" target="_blank">CNN Brasil</a> &middot; <a href="https://valor.globo.com/brasil/noticia/2022/05/04/regra-da-reforma-trabalhista-reduziu-desemprego-em-17-ponto-diz-estudo.ghtml" target="_blank">Valor Econ&ocirc;mico</a> &middot; <a href="https://crusoe.uol.com.br/edicoes/214/os-beneficios-da-reforma-trabalhista-na-ponta-do-lapis/" target="_blank">Cruso&eacute;</a></p>
     </div>
 
     <div class="paper-card">
-      <p class="paper-title"><a href="#">When Are Politically Irrelevant Events Relevant to Election Outcomes?</a></p>
-    </div>
-
-    <div class="paper-card">
-      <p class="paper-title"><a href="#">The Gospel According to Media: Religious Radio and the Rise of Pentecostalism in Brazil</a></p>
-      <p class="paper-meta">with Bruno Komatsu</p>
-    </div>
-
-    <div class="paper-card">
-      <p class="paper-title"><a href="#">Size of Legislature, Public Spending and Political Budget Cycle</a></p>
-    </div>
-
-    <div class="paper-card">
-      <p class="paper-title"><a href="#">Supply-side Secularization: Evidence from Religious Entrepreneurs in Brazil</a></p>
+      <p class="paper-title"><a href="https://drive.google.com/open?id=1Au3180DUtX-jp9WEWZXn4bk-iaKnpa59" target="_blank">When Are Politically Irrelevant Events Relevant to Election Outcomes?</a></p>
     </div>
 
   </div>
 
-  <p class="section-label" style="margin-top:3rem;">Publications</p>
+  <p class="section-label" style="margin-top:3rem">In Progress</p>
   <div class="papers-list">
-
-    <div class="paper-card">
-      <p class="paper-title"><a href="#">Regional Transfer Multipliers</a></p>
-      <p class="paper-meta">with Elias Papaioannou and Paolo Surico · <em>The Review of Economic Studies</em>, Vol. 86, Issue 5, Oct. 2019, pp. 1901–1934 <span class="status published">Published</span></p>
-      <p class="paper-featured">Featured in <a href="#">Voxeu.org</a>, May/2019 · 2020 Haralambos Simeonidis prize for best paper in Economics by a Brazilian scholar</p>
-    </div>
-
-    <div class="paper-card">
-      <p class="paper-title"><a href="#">Church Tax Exemption and Structure of Religious Markets: a Dynamic Structural Analysis</a></p>
-      <p class="paper-meta">with Fabio Miessi Sanches · <em>American Economic Journal: Microeconomics</em>, Vol. 17, No. 3, Aug. 2025, pp. 131–63 <span class="status published">Published</span></p>
-      <p class="paper-featured">Featured in AEA Research Highlights · The Economist · Nexo Jornal · O Estado de São Paulo · Jornal USP · Best paper at the 43rd Meeting of the Brazilian Econometric Society</p>
-    </div>
-
-    <div class="paper-card">
-      <p class="paper-title"><a href="#">The Decline of Religiosity in America: Evidence from a Structural Model of Endogenous Church Differentiation</a></p>
-      <p class="paper-meta">with Fabio A. Miessi Sanches · Accepted for publication at the <em>Journal of Political Economy: Microeconomics</em></p>
-    </div>
-
+    <div class="paper-card"><p class="paper-title">The Gospel According to Media: Religious Radio and the Rise of Pentecostalism in Brazil</p><p class="paper-meta">with Bruno Komatsu</p></div>
+    <div class="paper-card"><p class="paper-title">Size of Legislature, Public Spending and Political Budget Cycle</p></div>
+    <div class="paper-card"><p class="paper-title">Supply-side Secularization: Evidence from Religious Entrepreneurs in Brazil</p></div>
   </div>
 
-  <p class="section-label" style="margin-top:3rem;">Other Publications</p>
+  <p class="section-label" style="margin-top:3rem">Other Publications</p>
   <div class="papers-list">
-    <div class="paper-card">
-      <p class="paper-title">The Components of Economic Freedom, Income and Growth: an Empirical Analysis</p>
-      <p class="paper-meta"><em>Estudos Econômicos</em>, 2007, vol. 37, n.3, pp. 515–545</p>
-    </div>
-    <div class="paper-card">
-      <p class="paper-title">The Empirical Determinants of Happiness in Brazil</p>
-      <p class="paper-meta">with Naercio A. Menezes-Filho · <em>Revista de Economia Política</em>, 2006, vol. 26, n.4 (in Portuguese)</p>
-    </div>
+    <div class="paper-card"><p class="paper-title">The Components of Economic Freedom, Income and Growth: an Empirical Analysis</p><p class="paper-meta"><em>Estudos Econ&ocirc;micos</em>, 2007, vol. 37, n.3, pp. 515&ndash;545</p></div>
+    <div class="paper-card"><p class="paper-title">The Empirical Determinants of Happiness in Brazil</p><p class="paper-meta">with Naercio A. Menezes-Filho &middot; <em>Revista de Economia Pol&iacute;tica</em>, 2006, vol. 26, n.4 (in Portuguese)</p></div>
   </div>
+
 </section>
 
 <div class="section-divider"></div>
 
-<!-- OP-EDS -->
 <section id="opeds">
   <p class="section-label">Op-Eds &amp; Media</p>
   <div class="opeds-list">
-    <div class="oped-item">
-      <span class="oped-title"><a href="#">Por que o avanço evangélico estagnou e não deve voltar?</a></span>
-      <span class="oped-venue">Folha de São Paulo · Jun/2025</span>
-    </div>
-    <div class="oped-item">
-      <span class="oped-title"><a href="#">O risco de misturar religião e política no Código Eleitoral</a></span>
-      <span class="oped-venue">O Globo · May/2025</span>
-    </div>
-    <div class="oped-item">
-      <span class="oped-title"><a href="#">Deve-se aumentar a isenção de impostos para entidades religiosas? Não</a></span>
-      <span class="oped-venue">Folha de São Paulo · Jan/2025</span>
-    </div>
-    <div class="oped-item">
-      <span class="oped-title"><a href="#">Os benefícios da reforma trabalhista na ponta do lápis</a></span>
-      <span class="oped-venue">Crusoé · Jun/2022</span>
-    </div>
-    <div class="oped-item">
-      <span class="oped-title"><a href="#">O Congresso e as isenções tributárias das igrejas</a></span>
-      <span class="oped-venue">Nexo Jornal · Feb/2021</span>
-    </div>
-    <div class="oped-item">
-      <span class="oped-title"><a href="#">Transfer multipliers: Evidence from Brazil's Fundo de Participação dos Municípios</a></span>
-      <span class="oped-venue">Voxeu.org · May/2019</span>
-    </div>
+    <div class="oped-item"><span class="oped-title"><a href="https://www1.folha.uol.com.br/amp/cotidiano/2025/06/por-que-o-avanco-evangelico-estagnou-e-nao-deve-voltar.shtml" target="_blank">Por que o avan&ccedil;o evang&eacute;lico estagnou e n&atilde;o deve voltar?</a></span><span class="oped-venue">Folha de S&atilde;o Paulo &middot; Jun/2025</span></div>
+    <div class="oped-item"><span class="oped-title"><a href="https://oglobo.globo.com/google/amp/opiniao/artigos/coluna/2025/05/o-risco-de-misturar-religiao-e-politica-no-codigo-eleitoral.ghtml" target="_blank">O risco de misturar religi&atilde;o e pol&iacute;tica no C&oacute;digo Eleitoral</a></span><span class="oped-venue">O Globo &middot; May/2025</span></div>
+    <div class="oped-item"><span class="oped-title"><a href="https://www1.folha.uol.com.br/opiniao/2025/01/deve-se-aumentar-a-isencao-de-impostos-para-entidades-religiosas-nao.shtml" target="_blank">Deve-se aumentar a isen&ccedil;&atilde;o de impostos para entidades religiosas? N&atilde;o</a></span><span class="oped-venue">Folha de S&atilde;o Paulo &middot; Jan/2025</span></div>
+    <div class="oped-item"><span class="oped-title"><a href="https://crusoe.com.br/edicoes/214/os-beneficios-da-reforma-trabalhista-na-ponta-do-lapis/" target="_blank">Os benef&iacute;cios da reforma trabalhista na ponta do l&aacute;pis</a></span><span class="oped-venue">Cruso&eacute; &middot; Jun/2022</span></div>
+    <div class="oped-item"><span class="oped-title"><a href="https://www.nexojornal.com.br/ensaio/2021/O-Congresso-e-as-isen%C3%A7%C3%B5es-tribut%C3%A1rias-das-igrejas" target="_blank">O Congresso e as isen&ccedil;&otilde;es tribut&aacute;rias das igrejas</a></span><span class="oped-venue">Nexo Jornal &middot; Feb/2021</span></div>
+    <div class="oped-item"><span class="oped-title"><a href="https://voxeu.org/article/transfer-multipliers-evidence-brazil" target="_blank">Transfer multipliers: Evidence from Brazil's Fundo de Participa&ccedil;&atilde;o dos Munic&iacute;pios</a></span><span class="oped-venue">VoxEU.org &middot; May/2019</span></div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- TEACHING -->
 <section id="teaching">
   <p class="section-label">Teaching</p>
   <div class="teaching-grid">
@@ -510,18 +261,29 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<div class="section-divider"></div>
+
+<section id="consulting">
+  <p class="section-label">Consulting &amp; Policy Work</p>
+  <p class="consulting-intro">Alongside academic research, I advise organizations on applied economic questions &mdash; bringing rigorous empirical methods to real-world decisions in policy, regulation, litigation, and strategy.</p>
+  <div class="services-grid">
+    <div class="service-card"><h3>Economic Policy Advice</h3><p>Evidence-based guidance on labor markets, taxation, public spending, and religious economy regulation for governments and policy bodies.</p></div>
+    <div class="service-card"><h3>Litigation &amp; Expert Witness</h3><p>Economic analysis and expert testimony for legal proceedings involving labor, market structure, and public finance disputes.</p></div>
+    <div class="service-card"><h3>Private Sector &amp; Financial Institutions</h3><p>Data-driven economic analysis for firms and banks on market dynamics, demand estimation, and regulatory impact assessment.</p></div>
+    <div class="service-card"><h3>NGOs &amp; International Organizations</h3><p>Program evaluation, impact assessment, and research design for development and social policy initiatives in Brazil and Latin America.</p></div>
+  </div>
+  <div class="consulting-track"><p>I have worked with clients across the public and private sectors in Brazil and internationally, including government agencies, multilateral institutions, law firms, and financial organizations. Engagements have covered labor market reform, religious economy regulation, municipal finance, and program evaluation.</p></div>
+  <a class="consulting-cta" href="mailto:rcorbi@usp.br">Get in touch</a>
+</section>
+
 <div id="contact">
   <div class="inner">
     <p class="section-label">Contact</p>
     <p><a href="mailto:rcorbi@usp.br">rcorbi@usp.br</a></p>
-    <p class="contact-note">Department of Economics · University of São Paulo · São Paulo, Brazil</p>
+    <p class="contact-note">Department of Economics &middot; University of S&atilde;o Paulo &middot; S&atilde;o Paulo, Brazil</p>
   </div>
 </div>
 
-<footer>
-  © 2025 Raphael Corbi · Last updated April 2026
-</footer>
-
+<footer>&copy; 2025 Raphael Corbi &middot; Last updated April 2026</footer>
 </body>
 </html>
