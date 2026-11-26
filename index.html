@@ -82,18 +82,41 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
     .fade-up{opacity:0;animation:fadeUp .6s ease forwards}
     .delay-1{animation-delay:.1s}.delay-2{animation-delay:.22s}.delay-3{animation-delay:.34s}.delay-4{animation-delay:.46s}
+    :root { --section-gap: 2.5rem; }
+    section[id] { scroll-margin-top: 5rem; }
+    #home { padding-top: 3rem; padding-bottom: 2.5rem; gap: 2rem; }
+    .hero-position { font-weight: 600; margin-bottom: .65rem; }
+    .hero-intro { margin-bottom: 1rem; }
+    .hero-affiliations { margin-top: .8rem; color: var(--ink-light); font-size: .9rem; }
+    .hero-affiliations summary { cursor: pointer; }
+    .hero-affiliations p { margin-top: .5rem; }
+    .hero-roles { margin-bottom: 0; }
+    .section-label { font-size: .95rem; font-weight: 600; margin-bottom: 1rem; }
+    .papers-list { gap: 0; }
+    .papers-list .paper-card { background: transparent; border: 0; border-bottom: 1px solid var(--rule); padding: .9rem 0; }
+    .paper-featured { font-size: .9rem; font-style: normal; }
+    #book .paper-title { font-size: 1.25rem; }
+    #book .paper-featured { font-size: .95rem; }
+    @media (max-width: 640px) {
+      nav { height: auto; min-height: 56px; padding: .55rem 1rem; flex-wrap: wrap; gap: .3rem 1rem; }
+      nav ul { flex-wrap: wrap; }
+      nav ul a { font-size: .75rem; }
+      #home { padding-top: 2rem; }
+      section[id] { scroll-margin-top: 6rem; }
+    }
     @media(max-width:640px){#home{grid-template-columns:1fr}.hero-photo{width:160px;height:200px}.teaching-grid,.services-grid{grid-template-columns:1fr}nav ul{gap:1rem}.oped-item{flex-direction:column;gap:.2rem}}
   </style>
 </head>
 <body>
 
-<nav>
+<nav aria-label="Main navigation">
   <a class="logo" href="#home">Raphael Corbi</a>
   <ul>
-    <li><a href="#research">Research</a></li><li><a href="#book">Book</a></li>
-    <li><a href="#opeds">Op-Eds</a></li>
+    <li><a href="#book">Book</a></li>
+    <li><a href="#research">Research</a></li>
     <li><a href="#teaching">Teaching</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#opeds">Media</a></li>
+    <li><a href="https://www.dropbox.com/scl/fi/gy3pnmwkf0uy7kp7uglpv/CV_Corbi-9.pdf?rlkey=mfo743uolweofqoqm2e9d415w&dl=0">CV</a></li>
   </ul>
 </nav>
 
@@ -101,42 +124,35 @@
   <img class="hero-photo fade-up" src="photo2.jpg" alt="Raphael Corbi" />
   <div class="hero-text">
     <h1 class="fade-up delay-1">Raphael Corbi</h1>
-    <br>
-    <ul class="hero-roles fade-up delay-3">
-      <li>Full Professor of Economics, University of S&atilde;o Paulo</li>
+    <p class="hero-position">Full Professor of Economics, University of São Paulo</p>
+    <p class="hero-intro">I study how political institutions, labor markets, and religious organizations shape economic and social outcomes. My current research examines how churches enter, compete, and expand, and how those decisions shape religious change.</p>
+    <div class="hero-links fade-up delay-3">
+      <a href="https://www.dropbox.com/scl/fi/gy3pnmwkf0uy7kp7uglpv/CV_Corbi-9.pdf?rlkey=mfo743uolweofqoqm2e9d415w&dl=0" target="_blank">CV (English)</a>
+      <a href="#research">Research</a>
+      <a href="mailto:rcorbi@usp.br">Email</a>
+      <a href="https://lattes.cnpq.br/0306001183992855">CV Lattes</a>
+      <a href="https://orcid.org/0000-0001-5032-6373">ORCID</a>
+    </div>
+    <details class="hero-affiliations">
+      <summary>Biography and affiliations</summary>
+      <p>I received my Ph.D. from London Business School in 2014. My research has been featured in <em>The Economist</em>, <em>Folha de São Paulo</em>, and VoxEU.</p>
+      <ul class="hero-roles">
       <li>Research Director, <a href="https://sites.usp.br/cerp/" target="_blank">Center for the Studies of Religion and Public Policy</a></li>
       <li>Associate Editor, <em>Journal of Economics, Management, and Religion</em> (JEMAR)</li>
       <li>Invited Researcher, The Abdul Latif Jameel Poverty Action Lab (J-PAL)</li>
       <li>Board of Directors, <a href="https://www.aibe.website/" target="_blank">Italian-Brazilian Economic Association</a></li>
     </ul>
-    <div class="hero-links fade-up delay-3">
-      <a href="https://www.dropbox.com/scl/fi/gy3pnmwkf0uy7kp7uglpv/CV_Corbi-9.pdf?rlkey=mfo743uolweofqoqm2e9d415w&dl=0" target="_blank">CV (English)</a>
-      <a href="http://lattes.cnpq.br/0306001183992855" target="_blank">CV Lattes</a>
-      <a href="mailto:rcorbi@usp.br">Email</a>
-      <a href="https://scholar.google.com/citations?user=ADDYOURSCHOLARID" target="_blank">Google Scholar</a>
-    </div>
+    </details>
   </div>
 </div>
-<section id="research">
-  <p class="mini-bio" style="margin-top:.2rem">I am a Full Professor of Economics at the University of São Paulo, where I study how political institutions, labor markets, and religious organizations shape economic outcomes. My research has been featured in The Economist, Folha de São Paulo, and VoxEU, and awarded the Haralambos Simeonidis prize for best paper in Economics by a Brazilian scholar. I received my Ph.D. from the London Business School in 2014.
-  <br><br>
-  <p class="fields-line"><b>Finance and development &middot; Labor economics &middot; Economics of culture and religion &middot; Political economy</b></p>
-</section>
+
   
 <div class="section-divider"></div><section id="book"><p class="section-label">Book</p><div class="paper-card" style="display:flow-root"><a href="https://link.springer.com/book/9783032153371" style="float:left;width:clamp(85px, 25%, 160px);margin:0 1.3rem .7rem 0"><img src="https://media.springernature.com/full/springer-static/cover/book/9783032153388.jpg" alt="Cover of The Economic Roots of Evangelicalism in Brazil" style="display:block;width:100%;height:auto;border:1px solid var(--rule)"></a><p class="paper-title"><a href="https://link.springer.com/book/9783032153371" target="_blank">The Economic Roots of Evangelicalism in Brazil</a></p><p class="paper-authors">Fabio Miessi Sanches and Raphael Corbi</p><p><em>Using Microeconomic Theory to Understand Religious Conversion at Scale</em></p><p class="paper-featured" style="margin-top:.8rem">Forthcoming February 2027 &middot; Palgrave Macmillan</p><p class="paper-featured">This book uses microeconomic theory to examine the rapid expansion of Evangelicalism in Brazil, including the role of church organization and the economic forces behind conversion at scale.</p><p class="paper-featured"><a href="https://www.amazon.com/dp/3032153379" target="_blank">Pre-order on Amazon</a> &middot; <a href="https://link.springer.com/book/9783032153371" target="_blank">Publisher page</a></p></div></section><div class="section-divider"></div>
 
 <section id="research">
 
-  <p class="section-label">Publications</p>
+  <h2 class="section-label">Selected Papers</h2>
   <div class="papers-list">
-
-    <div class="paper-card">
-      <p class="paper-title"><a href="https://drive.google.com/file/d/139Py6lYjwkIAiYt2sFgoECsHmTbf_s9e/view" target="_blank">Regional Transfer Multipliers</a></p>
-      <p class="paper-authors">with Elias Papaioannou and Paolo Surico &middot; Vol. 86, Issue 5, Oct. 2019, pp. 1901&ndash;1934 &middot; <a href="https://doi.org/10.1093/restud/rdy069" target="_blank">DOI</a></p>
-      <span class="paper-journal published">The Review of Economic Studies</span>
-      <p class="paper-featured">Featured in <a href="https://voxeu.org/article/transfer-multipliers-evidence-brazil" target="_blank">VoxEU.org</a>, May/2019 &middot; 2020 Haralambos Simeonidis prize for best paper in Economics by a Brazilian scholar</p>
-    </div>
-
     <div class="paper-card">
       <p class="paper-title"><a href="https://drive.google.com/file/d/1w5oGKmpp80xbZbJmX9jadzUuGygl4Dz4/view" target="_blank">Church Tax Exemption and Structure of Religious Markets: a Dynamic Structural Analysis</a></p>
       <p class="paper-authors">with Fabio Miessi Sanches &middot; Vol. 17, No. 3, Aug. 2025, pp. 131&ndash;63 &middot; <a href="https://www.aeaweb.org/articles?id=10.1257/mic.20210238" target="_blank">DOI</a></p>
@@ -152,21 +168,31 @@
 
     <div class="paper-card">
       <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/ev3vd3b013s1usnrnptmu/mortality_abono_may2025.pdf?rlkey=nwkh8iifgtwf3vjz2vnci0amm&dl=0" target="_blank">Income Shocks and Mortality of Low-Wage Workers: Evidence from Wage Allowances in Brazil</a></p>
-      <p class="paper-authors">with Caio Pedro Castro &middot; Vol. 179, 2026 &middot; </p>
-      <span class="paper-journal forthcoming">Journal of Development Economics</span>
+      <p class="paper-authors">with Caio Pedro Castro &middot; Vol. 179, 2026</p>
+      <span class="paper-journal published">Journal of Development Economics</span>
     </div>
 
     <div class="paper-card">
       <p class="paper-title"><a href="https://www.dropbox.com/scl/fi/5s47osm1vhp69xpj4t9qj/NonWageCompensation_CFN-6.pdf?rlkey=u0me3196klbw0waks1xj2ile1&dl=0" target="_blank">Internal Migration and Labor Market Adjustments in the Presence of Nonwage Compensation</a></p>
-      <p class="paper-authors">with Tiago Ferraz and Renata Narita &middot; Vol. 177,2025 &middot; </p>
-      <span class="paper-journal forthcoming">Journal of Development Economics</span>
+      <p class="paper-authors">with Tiago Ferraz and Renata Narita &middot; Vol. 177, 2025</p>
+      <span class="paper-journal published">Journal of Development Economics</span>
     </div>
 
     <div class="paper-card">
       <p class="paper-title"><a href="https://www.dropbox.com/s/ei7pgtw9vv6jag1/Edited_Democracy_aug22.pdf?dl=0" target="_blank">Media Manipulation in Young Democracies: Evidence From the 1989 Brazilian Presidential Election
 </a></p>
-      <p class="paper-authors">with Alexsandros Cavgias, Luis Meloni and Lucas Novaes &middot; 57(2), 221-253, 2023 &middot; </p>
-      <span class="paper-journal forthcoming">Comparative Political Studies</span>
+      <p class="paper-authors">with Alexsandros Cavgias, Luis Meloni and Lucas Novaes &middot; 57(2), 221-253, 2023</p>
+      <span class="paper-journal published">Comparative Political Studies</span>
+    </div>
+  </div>
+
+  <h2 class="section-label" style="margin-top:2rem">Additional Publications</h2>
+  <div class="papers-list">
+    <div class="paper-card">
+      <p class="paper-title"><a href="https://drive.google.com/file/d/139Py6lYjwkIAiYt2sFgoECsHmTbf_s9e/view" target="_blank">Regional Transfer Multipliers</a></p>
+      <p class="paper-authors">with Elias Papaioannou and Paolo Surico &middot; Vol. 86, Issue 5, Oct. 2019, pp. 1901&ndash;1934 &middot; <a href="https://doi.org/10.1093/restud/rdy069" target="_blank">DOI</a></p>
+      <span class="paper-journal published">The Review of Economic Studies</span>
+      <p class="paper-featured">Featured in <a href="https://voxeu.org/article/transfer-multipliers-evidence-brazil" target="_blank">VoxEU.org</a>, May/2019 &middot; 2020 Haralambos Simeonidis prize for best paper in Economics by a Brazilian scholar</p>
     </div>
 
     <div class="paper-card">
@@ -192,7 +218,6 @@
       <p class="paper-authors">with Cristiano Carvalho and Renata Narita &middot; Vol. 162, pp. 157&ndash;161, 2018</p>
       <span class="paper-journal published">Economics Letters</span>
     </div>
-
   </div>
 
   <p class="section-label" style="margin-top:3rem">Working Papers</p>
@@ -275,6 +300,8 @@ Mergers and Schisms in American Protestantism</p>
       <p class="paper-authors"></p>
     </div>
   
+  </div>
+
   <p class="section-label" style="margin-top:3rem">Other Publications</p>
   <div class="papers-list">
     <div class="paper-card">
@@ -327,6 +354,6 @@ Mergers and Schisms in American Protestantism</p>
   </div>
 </div>
 
-<footer>&copy; 2025 Raphael Corbi &middot; Last updated April 2026</footer>
+<footer>&copy; 2026 Raphael Corbi &middot; Last updated November 2026</footer>
 </body>
 </html>
